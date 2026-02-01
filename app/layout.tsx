@@ -2,10 +2,12 @@ import type React from "react"
 import type { Metadata } from "next"
 
 import "./globals.css"
+import AuthProvider from "@/components/auth-provider"
 
 import {
   Inter,
   Playfair_Display,
+  Lato,
   Libre_Baskerville as V0_Font_Libre_Baskerville,
   IBM_Plex_Mono as V0_Font_IBM_Plex_Mono,
   Lora as V0_Font_Lora,
@@ -31,10 +33,17 @@ const playfair = Playfair_Display({
   display: "swap",
 })
 
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
+  variable: "--font-lato",
+  display: "swap",
+})
+
 export const metadata: Metadata = {
-  title: "RoomVision - Visualize Furniture in Your Space",
+  title: "Adani Kandivali - Premium Luxury Living in Mumbai",
   description:
-    "See how furniture fits your space before you buy. Upload a room photo and furniture image to create realistic visualizations.",
+    "Adani Kandivali by Adani Realty brings a legacy of excellence to one of Mumbai's most evolving suburbs. Premium luxury living in the western corridor.",
   generator: "v0.app",
 }
 
@@ -44,8 +53,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="bg-background text-foreground font-sans antialiased">{children}</body>
+    <html lang="en" className={`${inter.variable} ${playfair.variable} ${lato.variable}`}>
+      <body className="bg-background text-foreground font-sans antialiased">
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   )
 }
