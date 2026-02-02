@@ -66,12 +66,16 @@ export default function SignupPage() {
       const signInResult = await signIn("credentials", {
         email: data.email,
         password: data.password,
-        callbackUrl: "/dashboard",
-        redirect: true,
+        redirect: false,
       })
 
-      // This code won't run if redirect is successful
       if (signInResult?.error) {
+        setError("Account created but sign in failed. Please try logging in.")
+        setIsLoading(false)
+      } else if (signInResult?.ok) {
+        // Successful sign in - manually redirect
+        router.push("/dashboard")
+      } else {
         setError("Account created but sign in failed. Please try logging in.")
         setIsLoading(false)
       }

@@ -43,18 +43,21 @@ export default function LoginPage() {
     setError("")
 
     try {
-      // Use signIn with redirect: true and callbackUrl
+      // Use signIn with redirect: false to handle redirect manually
       const result = await signIn("credentials", {
         email: data.email,
         password: data.password,
-        callbackUrl: callbackUrl,
-        redirect: true,
+        redirect: false,
       })
 
-      // This code won't run if redirect is successful
-      // Only runs if there's an error
       if (result?.error) {
         setError(result.error)
+        setIsLoading(false)
+      } else if (result?.ok) {
+        // Successful login - manually redirect
+        router.push(callbackUrl)
+      } else {
+        setError("Something went wrong. Please try again.")
         setIsLoading(false)
       }
     } catch (err) {

@@ -3,6 +3,13 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import bcrypt from "bcryptjs"
 import { db } from "@/lib/db"
 
+const vercelUrl = process.env.VERCEL_URL
+const resolvedAuthUrl = process.env.NEXTAUTH_URL || (vercelUrl ? `https://${vercelUrl}` : undefined)
+
+if (!process.env.NEXTAUTH_URL && resolvedAuthUrl) {
+  process.env.NEXTAUTH_URL = resolvedAuthUrl
+}
+
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
@@ -65,5 +72,6 @@ export const authOptions: NextAuthOptions = {
     }
   },
   debug: process.env.NODE_ENV === "development",
+  trustHost: true,
   secret: process.env.NEXTAUTH_SECRET || "arboreal-secret-key-change-in-production"
 }
