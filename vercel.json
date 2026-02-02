@@ -1,0 +1,12 @@
+{
+  "env": {
+    "NEXTAUTH_URL": "https://arboreal-test1.vercel.app",
+    "NEXTAUTH_SECRET": "arboreal-secret-key-change-this-in-production",
+    "NEXT_PUBLIC_FIREBASE_API_KEY": "AIzaSyB7J715vs_bIgm1kOP4V34MlGDMdfCy4AQ",
+    "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN": "arboreal-ecd12.firebaseapp.com",
+    "NEXT_PUBLIC_FIREBASE_PROJECT_ID": "arboreal-ecd12",
+    "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET": "arboreal-ecd12.firebasestorage.app",
+    "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID": "219459700023",
+    "NEXT_PUBLIC_FIREBASE_APP_ID": "1:219459700023:web:a3fb2ffa3a72f0d32086b2"
+  }
+}
