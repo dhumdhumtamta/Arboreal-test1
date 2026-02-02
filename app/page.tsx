@@ -52,24 +52,26 @@ export default function Home() {
         <div className="w-full max-w-7xl flex flex-col items-center gap-12">
           <section className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
-              <motion.h1
+              <motion.div
                 initial={{ y: 6, opacity: 0 }}
                 animate={{ y: 0, opacity: headlineOpacity }}
                 transition={{ duration: 0.45 }}
-                className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-slate-900"
               >
-                The bridge between your Pinterest board and your living room.
-              </motion.h1>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-slate-900">
+                  The bridge between your Pinterest board and your living room.
+                </h1>
+              </motion.div>
 
-              <motion.p
+              <motion.div
                 initial={{ y: 6, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.08, duration: 0.45 }}
-                className="text-base sm:text-lg text-slate-600 max-w-xl"
               >
-                Arboreal isn't just a design tool. We visualize your dream setup and then physically build,
-                deliver, and install it in your home. From URL to IRL in 15 days.
-              </motion.p>
+                <p className="text-base sm:text-lg text-slate-600 max-w-xl">
+                  Arboreal isn't just a design tool. We visualize your dream setup and then physically build,
+                  deliver, and install it in your home. From URL to IRL in 15 days.
+                </p>
+              </motion.div>
 
               <div className="flex items-center gap-4 justify-center lg:justify-start">
                 <Link href="/capture">
@@ -97,22 +99,26 @@ export default function Home() {
                 </div>
 
                 <motion.div
-                  className="absolute inset-y-0 w-[2px] bg-white shadow-[0_0_0_1px_rgba(15,23,42,0.08)]"
                   style={{ left: `${position}%`, transform: "translateX(-1px)" }}
                   animate={{ left: `${position}%` }}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
+                >
+                  <div className="absolute inset-y-0 w-[2px] bg-white shadow-[0_0_0_1px_rgba(15,23,42,0.08)]" />
+                </motion.div>
 
                 <motion.div
-                  className="absolute top-1/2 -translate-y-1/2"
                   style={{ left: `${position}%` }}
                   animate={{ left: `${position}%` }}
                   transition={{ type: "spring", stiffness: 300, damping: 28 }}
                 >
-                  <div className="h-14 w-14 rounded-full bg-white shadow-lg border border-slate-200 flex items-center justify-center cursor-grab -translate-x-1/2">
-                    <motion.div whileTap={{ scale: 0.95 }} className="h-10 w-10 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs font-medium select-none">
-                      ⇆
-                    </motion.div>
+                  <div className="absolute top-1/2 -translate-y-1/2">
+                    <div className="h-14 w-14 rounded-full bg-white shadow-lg border border-slate-200 flex items-center justify-center cursor-grab -translate-x-1/2">
+                      <motion.div whileTap={{ scale: 0.95 }}>
+                        <div className="h-10 w-10 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs font-medium select-none">
+                          ⇆
+                        </div>
+                      </motion.div>
+                    </div>
                   </div>
                 </motion.div>
 

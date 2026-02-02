@@ -72,6 +72,5 @@ export const authOptions: NextAuthOptions = {
     }
   },
   debug: process.env.NODE_ENV === "development",
-  trustHost: true,
   secret: process.env.NEXTAUTH_SECRET || "arboreal-secret-key-change-in-production"
 }

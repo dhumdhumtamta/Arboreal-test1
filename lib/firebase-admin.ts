@@ -12,17 +12,21 @@ export const isAdminConfigured = () => {
 let adminDb: ReturnType<typeof getFirestore> | null = null
 
 if (isAdminConfigured()) {
-  const app = getApps().length === 0
-    ? initializeApp({
-        credential: cert({
-          projectId,
-          clientEmail,
-          privateKey: privateKey?.replace(/\\n/g, "\n"),
-        }),
-      })
-    : getApps()[0]
+  try {
+    const app = getApps().length === 0
+      ? initializeApp({
+          credential: cert({
+            projectId: projectId || "",
+            clientEmail: clientEmail || "",
+            privateKey: (privateKey?.replace(/\\n/g, "\n") || ""),
+          }),
+        })
+      : getApps()[0]
 
-  adminDb = getFirestore(app)
+    adminDb = getFirestore(app)
+  } catch (error) {
+    console.warn("Failed to initialize Firebase Admin:", error)
+  }
 } else {
   console.warn("Firebase Admin is not configured. Server-side writes will use client SDK or fallback storage.")
 }
